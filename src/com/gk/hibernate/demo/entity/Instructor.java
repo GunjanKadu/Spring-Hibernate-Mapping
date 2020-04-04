@@ -39,7 +39,7 @@ public class Instructor {
 
 	}
 
-	public void Instructor(String firstName, String lastName, String email) {
+	public  Instructor(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.firstName = lastName;
 		this.email = email;

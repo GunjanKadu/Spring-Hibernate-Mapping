@@ -20,9 +20,9 @@ public class CreateDemo {
 		try {
 
 			// create the objects
-			Instructor tempInstructor = new Instructor("Madhu", "Patel", "Madhu.patel@gmail.com");
+			Instructor tempInstructor = new Instructor("Gunjan", "Kadu", "Gunjan.Kadu@gmail.com");
 
-			InstructorDetails tempInstructorDetails = new InstructorDetails("http://www.madhhuPatel.com/youtube",
+			InstructorDetails tempInstructorDetails = new InstructorDetails("http://www.GunjanKadu.com/youtube",
 					"Love to Play Music");
 
 			// associate the objects

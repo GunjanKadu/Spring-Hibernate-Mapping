@@ -42,7 +42,7 @@ public class Instructor {
 
 	public  Instructor(String firstName, String lastName, String email) {
 		this.firstName = firstName;
-		this.firstName = lastName;
+		this.lastName = lastName;
 		this.email = email;
 	}
 

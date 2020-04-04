@@ -28,7 +28,9 @@ public class InstructorDetails {
 	private String hobbyString;
 
 	// add new field for instructor i.e bidirectional mapping
-	@OneToOne(mappedBy = "instructorDetail", cascade = CascadeType.ALL)
+	// cascade type not using CascadeType.REMOVE because we only want to delete the constructor details
+	@OneToOne(mappedBy = "instructorDetail", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH })
 	private Instructor instructor;
 
 	public Instructor getInstructor() {

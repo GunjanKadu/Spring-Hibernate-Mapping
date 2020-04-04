@@ -18,21 +18,23 @@ public class CreateDemo {
 		Session session = factory.getCurrentSession();
 
 		try {
-			
-			// create the objects
-			Instructor tempInstructor = new Instructor("Gunjan", "Kadu", "agunjan.kadu@gmail.com");
-			
-			InstructorDetails tempInstructorDetails = new InstructorDetails("http://www.gunjanKadu.com/youtube","Love To Code");
 
-			
+			// create the objects
+			Instructor tempInstructor = new Instructor("Madhu", "Patel", "Madhu.patel@gmail.com");
+
+			InstructorDetails tempInstructorDetails = new InstructorDetails("http://www.madhhuPatel.com/youtube",
+					"Love to Play Music");
+
 			// associate the objects
 			tempInstructor.setInstructorDetail(tempInstructorDetails);
-			
 
 			// start a transaction
 			session.beginTransaction();
 
-			// save the instructor
+			// save the instructor && this will also save the details object due to
+			// cascadetype.all
+			System.out.println("Saving Instructors: " + tempInstructor);
+			session.save(tempInstructor);
 
 			// commit the transaction
 

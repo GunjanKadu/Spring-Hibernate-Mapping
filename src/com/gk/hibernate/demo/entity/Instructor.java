@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -31,7 +32,7 @@ public class Instructor {
 
 	// setup mapping between instructor and instructor details
 	@OneToOne(cascade = CascadeType.ALL)
-	@Column(name = "instructor_detail_id")
+	@JoinColumn(name = "instructor_detail_id")
 	private InstructorDetails instructorDetail;
 
 	// create constructors

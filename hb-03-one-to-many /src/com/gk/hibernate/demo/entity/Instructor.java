@@ -35,11 +35,11 @@ public class Instructor {
 	private String email;
 
 	// setup mapping between instructor and instructor details
-	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "instructor_detail_id")
 	private InstructorDetails instructorDetail;
 
-	@OneToMany(mappedBy = "instructor", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+	@OneToMany(mappedBy = "instructor", cascade = {  CascadeType.PERSIST, CascadeType.MERGE,CascadeType.DETACH,
 			CascadeType.REFRESH })
 	private List<Course> courses;
 
@@ -111,13 +111,13 @@ public class Instructor {
 				+ ", instructorDetail=" + instructorDetail + "]";
 	}
 
-	// methhod to add bi-directional relationship
+	// method to add bidirectional relationship
 
 	public void add(Course tempCourse) {
-		if (this.courses == null) {
-			this.courses = new ArrayList<>();
+		if (courses == null) {
+			courses = new ArrayList<>();
 		}
-		this.courses.add(tempCourse);
+		courses.add(tempCourse);
 		tempCourse.setInstructor(this);
 
 	}

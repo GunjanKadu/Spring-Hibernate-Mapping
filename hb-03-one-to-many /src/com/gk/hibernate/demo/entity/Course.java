@@ -13,7 +13,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "course")
 public class Course {
-	// define our field
+
+	// define our fields
+
+	// define constructors
+
+	// define getter setters
+
+	// define tostring
+
+	// annotate fields
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,21 +32,18 @@ public class Course {
 	@Column(name = "title")
 	private String title;
 
-	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
 	@JoinColumn(name = "instructor_id")
 	private Instructor instructor;
 
-	// define constructors
 	public Course() {
 
 	}
 
 	public Course(String title) {
-
 		this.title = title;
 	}
 
-	// define getters and setters
 	public int getId() {
 		return id;
 	}
@@ -62,11 +68,9 @@ public class Course {
 		this.instructor = instructor;
 	}
 
-	// define to string
 	@Override
 	public String toString() {
 		return "Course [id=" + id + ", title=" + title + "]";
 	}
 
-	// annotate the fields
 }

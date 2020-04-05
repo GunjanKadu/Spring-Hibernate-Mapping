@@ -1,5 +1,8 @@
 package com.gk.hibernate.demo.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -31,23 +35,34 @@ public class Instructor {
 	private String email;
 
 	// setup mapping between instructor and instructor details
-	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
-			CascadeType.REFRESH })
+	@OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	@JoinColumn(name = "instructor_detail_id")
 	private InstructorDetails instructorDetail;
+
+	@OneToMany(mappedBy = "instructor", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH })
+	private List<Course> courses;
 
 	// create constructors
 	public Instructor() {
 
 	}
 
-	public  Instructor(String firstName, String lastName, String email) {
+	public Instructor(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 	}
 
 	// generate getter/setter
+
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
 
 	public int getId() {
 		return id;
@@ -94,6 +109,17 @@ public class Instructor {
 	public String toString() {
 		return "Instructor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", instructorDetail=" + instructorDetail + "]";
+	}
+
+	// methhod to add bi-directional relationship
+
+	public void add(Course tempCourse) {
+		if (this.courses == null) {
+			this.courses = new ArrayList<>();
+		}
+		this.courses.add(tempCourse);
+		tempCourse.setInstructor(this);
+
 	}
 
 }

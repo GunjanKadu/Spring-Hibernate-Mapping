@@ -24,9 +24,9 @@ public class CreateInstructorDemo {
 		try {
 
 			// create the objects
-			Instructor tempInstructor = new Instructor("Susan", "Public", "susan.public@gmail.com");
+			Instructor tempInstructor = new Instructor("Harshana", "Kadu", "harshanaKadu@gmail.com");
 
-			InstructorDetails tempInstructorDetails = new InstructorDetails("http://www.ArunKaduu.com/youtube",
+			InstructorDetails tempInstructorDetails = new InstructorDetails("http://www.harshanaKadu.com/youtube",
 					"Love to Play video games");
 
 			// associate the objects

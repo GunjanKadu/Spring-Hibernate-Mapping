@@ -7,13 +7,15 @@ import org.hibernate.cfg.Configuration;
 import com.gk.hibernate.demo.entity.Course;
 import com.gk.hibernate.demo.entity.Instructor;
 import com.gk.hibernate.demo.entity.InstructorDetails;
+import com.gk.hibernate.demo.entity.Review;
 
 public class CreateCoursesAndReviewsDemo {
 
 	public static void main(String[] args) {
 		// create session factory
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Instructor.class)
-				.addAnnotatedClass(InstructorDetails.class).addAnnotatedClass(Course.class).buildSessionFactory();
+				.addAnnotatedClass(InstructorDetails.class).addAnnotatedClass(Course.class)
+				.addAnnotatedClass(Review.class).buildSessionFactory();
 
 		// create session
 		Session session = factory.getCurrentSession();
@@ -23,24 +25,23 @@ public class CreateCoursesAndReviewsDemo {
 			// start a transaction
 			session.beginTransaction();
 
-			// get the instructor from db
-			int theid = 14;
-			Instructor temInstructor = session.get(Instructor.class, theid);
+			// create a course
+			Course tempCourse = new Course("Pacman - How to score one million point");
 
-			// create some courses
-			Course tempCourse1 = new Course("Cooking");
-			Course tempCourse2 = new Course("Stitching ");
+			// add some reviews
+			tempCourse.addReview(new Review("Great Course....loved it"));
+			tempCourse.addReview(new Review("Cool course....Good job done"));
+			tempCourse.addReview(new Review("What a dumb course.....you are an idiot"));
 
-			// add courses to the instructor
-			temInstructor.add(tempCourse1);
-			temInstructor.add(tempCourse2);
-
-			// save the courses
-			session.save(tempCourse1);
-			session.save(tempCourse2);
+			// save the course .... and leverage the cascade all
+			System.out.println("Saving the Course");
+			System.out.println(tempCourse);
+			System.out.println(tempCourse.getReviews());
+			session.save(tempCourse);
 
 			// commit the transaction
 			session.getTransaction().commit();
+			System.out.println("Done!!");
 
 		} finally {
 			session.close();

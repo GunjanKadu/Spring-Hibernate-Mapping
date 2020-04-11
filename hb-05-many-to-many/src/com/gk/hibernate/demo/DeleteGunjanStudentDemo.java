@@ -10,7 +10,7 @@ import com.gk.hibernate.demo.entity.InstructorDetails;
 import com.gk.hibernate.demo.entity.Review;
 import com.gk.hibernate.demo.entity.Student;
 
-public class GetCoursesForGunjanDemo {
+public class DeleteGunjanStudentDemo {
 
 	public static void main(String[] args) {
 		// create session factory
@@ -28,14 +28,10 @@ public class GetCoursesForGunjanDemo {
 
 			int theId = 1;
 
-			// get the student from the database
+			// get the student gunjan from the database
 			Student tempStudent = session.get(Student.class, theId);
 			System.out.println("Loaded Student" + tempStudent);
 			System.out.println("Courses: " + tempStudent.getCourses());
-
-			// delete the students
-			System.out.println("Deleting the student" + tempStudent);
-			session.delete(tempStudent);
 
 			// commit the transaction
 			session.getTransaction().commit();

@@ -27,7 +27,6 @@ public class Review {
 	}
 
 	public Review(String comment) {
-		super();
 		this.comment = comment;
 	}
 

@@ -77,7 +77,7 @@ public class Course {
 		this.instructor = instructor;
 	}
 
-	// add a convienience method
+	// add a convenience method
 
 	public void addReview(Review theReview) {
 		if (reviews == null) {

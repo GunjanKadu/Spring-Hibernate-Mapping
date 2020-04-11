@@ -40,11 +40,6 @@ public class Student {
 
 	}
 
-	@Override
-	public String toString() {
-		return "student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
-	}
-
 	public Student(String firstName, String lastName, String email) {
 
 		this.firstName = firstName;
@@ -90,6 +85,11 @@ public class Student {
 
 	public void setCourses(List<Course> courses) {
 		this.courses = courses;
+	}
+
+	@Override
+	public String toString() {
+		return "student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
 
 }
